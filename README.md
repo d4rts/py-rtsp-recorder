@@ -35,3 +35,29 @@ Edit values with yours
 ```shell
 $ python3 recorder.py
 ```
+
+
+## Use with docker
+
+### Docker
+
+```shell
+$ docker run -d \
+  --name rtsp_recorder \
+  --env-file .env \
+  -v $(pwd)/recordings:/app/recordings \
+  ghcr.io/d4rts/py-rtsp-recorder:latest
+```
+
+### Docker compose
+```yml
+services:
+  recorder:
+    image: ghcr.io/d4rts/py-rtsp-recorder:latest
+    container_name: rtsp_recorder
+    env_file:
+      - .env
+    volumes:
+      - ./recordings:/app/recordings
+    restart: unless-stopped
+```
