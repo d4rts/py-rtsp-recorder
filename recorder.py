@@ -25,7 +25,7 @@ def run_ffmpeg(output_pattern: str):
         "-hide_banner",
         "-loglevel", "warning",
         "-rtsp_transport", "tcp",
-        "-use_wallclock_as_timestamps", "1"
+        "-use_wallclock_as_timestamps", "1",
         "-fflags", "+genpts",
         "-i", RTSP_URL,
         "-c", "copy",
